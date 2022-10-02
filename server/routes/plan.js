@@ -5,6 +5,27 @@ const { body, validationResult } = require('express-validator');
 const User = require('../models/User');
 
 
+router.get('/fetchSubscription', fetchuser,async(req,res) => {
+    try{
+        console.log(req)
+        let userDetails = await User.find({_id : req.user.id})
+        res.json({
+            message: "Plan Fetched Successfuly",
+            code: 201,
+            data: userDetails
+        })
+
+    }catch(err){
+        console.log(err)
+        res.json({
+            status: "failed",
+            code: 401,
+            error: err
+        })
+    }
+})
+
+
 router.post('/updateSubscription',fetchuser, async(req,res) => {
     try{
         let subsciptionStart = Date(Date.now())
@@ -12,7 +33,7 @@ router.post('/updateSubscription',fetchuser, async(req,res) => {
         let interval = req.body.interval
 
         let userDetails = await User.updateOne({
-            _id : req.body._id
+            _id : req.user.id
         },{
             $set : {
                 plan : plan,
@@ -46,7 +67,7 @@ router.post('/deleteSubscription',fetchuser, async(req,res) => {
         let interval = null
 
         let userDetails = await User.updateOne({
-            _id : req.body._id
+            _id : req.user.id
         },{
             $set : {
                 plan : plan,

@@ -7,13 +7,25 @@ export default function Plan(props) {
 
   useEffect(() => {
     if (!localStorage.getItem("token")) {
-      navigate("/homepage");
+      navigate("/login");
     }
     getUser();
+    fetchSubscription();
     // eslint-disable-next-line
   }, []);
 
   // Separate function to get user details
+
+  const fetchSubscription = async(req,res) => {
+    const response = await fetch(`http://localhost:5000/api/plan/fetchSubscription`, {
+      method: "GET",
+      headers: {
+        "auth-token": localStorage.getItem("token"),
+      },
+    });
+    const data = await response.json();
+    console.log(data)
+  }
 
   async function getUser() {
     const response = await fetch(`http://localhost:5000/api/auth/getUser`, {

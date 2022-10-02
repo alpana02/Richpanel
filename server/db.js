@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const uri = `mongodb://localhost:27017/richpanel`;
+const uri = `mongodb+srv://Satwik:Newton%408730@cluster0.zkoy6r7.mongodb.net/test`;
 
 const connectToMongo = () => {
   mongoose.connect(
