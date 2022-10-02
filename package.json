@@ -7,7 +7,7 @@
     },
     "dependencies": {
         "concurrently": "^7.4.0",
-        "google-search-results-nodejs": "^2.1.0"
+        "google-search-results-nodejs": "^2.1.0",
         "@material-ui/core": "^4.12.3",
         "@syncfusion/ej2-react-schedule": "^19.4.42",
         "@testing-library/jest-dom": "^5.16.1",
