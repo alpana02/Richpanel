@@ -2,6 +2,15 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+
+
+
 export default function About(props) {
   let navigate = useNavigate();
   const [profile, setProfile] = useState([]);
@@ -35,7 +44,7 @@ export default function About(props) {
   }
 
 
-  return yearly ? (
+  return !yearly ? (
     <div className="container py-6 mt-5">
       <div className="px-5 mt-3">
         <table class="table table-hover table-fixed">
@@ -245,7 +254,9 @@ export default function About(props) {
         <div class="row">
           <div class="col"></div>
           <div class="col">
+          <Link to ='/payment'>
             <div className="d-grid gap-2">
+              
               <button
                 className="btn mb-3"
                 type="submit"
@@ -254,6 +265,7 @@ export default function About(props) {
                 Next
               </button>
             </div>
+            </Link>
           </div>
           <div class="col"></div>
         </div>
@@ -470,6 +482,7 @@ export default function About(props) {
         <div class="row">
           <div class="col"></div>
           <div class="col">
+          <Link to ='/payment'>
             <div className="d-grid gap-2">
               <button
                 className="btn mb-3"
@@ -479,6 +492,7 @@ export default function About(props) {
                 Next
               </button>
             </div>
+            </Link>
           </div>
           <div class="col"></div>
         </div>

@@ -35,8 +35,14 @@ export default function Plan(props) {
               className="card shadow-2-strong"
               style={{ borderRadius: "1rem" }}
             >
-              <div className="card-body p-2 px-2">
-                <b>Current Plan details</b>
+              <div className="card-body p-3">
+                <b>Current Plan Details</b> <span class="badge badge-primary text-primary">Active</span> <button type="button" class="btn btn-default align-right">Cancel</button>
+
+                <div className=""><h3>Basic</h3>
+                <h8>Phone + Tablet</h8></div>
+                <h1><b>Rs 2000/year</b></h1>
+                <button type="button" class="btn btn-default border-primary text-primary mb-2">Change Plan</button>
+                <p>Your subscription has started on <b>Jul 11th, 2022</b>and will auto renew on <b>Jul 12th, 2023</b> </p>
               </div>
             </div>
           </div>
