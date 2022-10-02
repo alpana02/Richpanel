@@ -35,7 +35,7 @@ export default function About(props) {
   }
 
 
-  return !yearly ? (
+  return yearly ? (
     <div className="container py-6 mt-5">
       <div className="px-5 mt-3">
         <table class="table table-hover table-fixed">
