@@ -1,24 +1,24 @@
 const express = require('express');
 const router = express.Router();
 const fetchuser = require('../middleware/fetchuser');
-const Note = require('../models/Subscription');
+const Subscription = require('../models/Subscription');
 const { body, validationResult } = require('express-validator');
 
 // ROUTE 1: Get All the Subscription using: GET "/api/subscription/getuser". Login required
-router.get('/fetchallsubscription', fetchuser, async (req, res) => {
+router.get('/fetchallsubscriptions', fetchuser, async (req, res) => {
     try {
-        const notes = await Note.find({ user: req.user.id });
-        res.json(subscription)
+        const subscriptions = await Subscription.find({ user: req.user.id });
+        res.json(subscriptions)
     } catch (error) {
         console.error(error.message);
         res.status(500).send("Internal Server Error");
     }
 })
 
-// ROUTE 2: Add a new subscription using: POST "/api/subscription/addnote". Login required
-router.post('/addnote', fetchuser, async (req, res) => {
+// ROUTE 2: Add a new subscription using: POST "/api/subscriptions/addsubscription". Login required
+router.post('/addsubscription', fetchuser, async (req, res) => {
         try {
-            const { title, description, tag } = req.body;
+            const { plan, interval } = req.body;
 
             // If there are errors, return Bad request and the errors
             const errors = validationResult(req);
@@ -38,8 +38,7 @@ router.post('/addnote', fetchuser, async (req, res) => {
         }
     })
 
-
-// ROUTE 4: Delete an existing subscription using: DELETE "/api/subscription/deletenote". Login required
+// ROUTE 3: Delete an existing subscription using: DELETE "/api/subscription/deletesubscription". Login required
 router.delete('/deletesubscription/:id', fetchuser, async (req, res) => {
     try {
         // Find the subscription to be delete and delete it
@@ -51,11 +50,12 @@ router.delete('/deletesubscription/:id', fetchuser, async (req, res) => {
             return res.status(401).send("Not Allowed");
         }
 
-        note = await Note.findByIdAndDelete(req.params.id)
+        subscription = await Subscription.findByIdAndDelete(req.params.id)
         res.json({ "Success": "Subscription has been deleted", subscription: subscription });
     } catch (error) {
         console.error(error.message);
         res.status(500).send("Internal Server Error");
     }
 })
+
 module.exports = router

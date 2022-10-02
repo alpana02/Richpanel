@@ -27,7 +27,21 @@ export default function Plan(props) {
   }
 
   return (
-    <div className="container py-6 mt-5">
-    </div>
+    <section className="vh-100" style={{ backgroundColor: "#1E4C91" }}>
+      <div className="container py-5 h-100">
+        <div className="row d-flex justify-content-center align-items-center h-100">
+          <div className="col-12 col-md-8 col-lg-6 col-xl-4">
+            <div
+              className="card shadow-2-strong"
+              style={{ borderRadius: "1rem" }}
+            >
+              <div className="card-body p-5">
+                <b>Current Plan details</b>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
