@@ -14,6 +14,15 @@ const UserSchema = new Schema({
     type: String,
     required: true,
   },
+  subsciptionStart: {
+      type: Date,
+  },
+  plan: {
+    type: String,
+  },
+  interval: {
+    type: String,
+  }
 });
 const User = new mongoose.model("user", UserSchema);
 User.createIndexes();
