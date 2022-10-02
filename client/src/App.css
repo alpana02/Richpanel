@@ -37,3 +37,27 @@
     transform: rotate(360deg);
   }
 }
+
+.toggle{
+  background-color: #1E4C91;
+  height: 45px;
+  width: 100px;
+  border-radius: 45px;
+  margin-top: 45px;
+  display: flex;
+}
+
+.toggle-left{
+  height: 30px;
+  width: 30px;
+  background-color: white;
+  border-radius: 25px;
+  margin: 7px;
+}
+.toggle-right{
+  height: 30px;
+  width: 30px;
+  background-color: white;
+  border-radius: 25px;
+  margin: 7px 7px 7px 60px;
+}

@@ -35,7 +35,7 @@ export default function Plan(props) {
               className="card shadow-2-strong"
               style={{ borderRadius: "1rem" }}
             >
-              <div className="card-body p-5">
+              <div className="card-body p-2 px-2">
                 <b>Current Plan details</b>
               </div>
             </div>

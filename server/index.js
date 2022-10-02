@@ -17,7 +17,6 @@ app.use(express.urlencoded({ extended: true }));
 
 //Available routes
 app.use("/api/auth", require("./routes/auth"));
-app.use('/api/subscriptions', require('./routes/subscriptions'))
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);

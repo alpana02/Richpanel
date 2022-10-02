@@ -6,6 +6,12 @@ export default function About(props) {
   let navigate = useNavigate();
   const [profile, setProfile] = useState([]);
   const [yearly, setYearly] = useState(false);
+  const [toggleButton, setToggleButton] = useState(false);
+  const handleClick = () => {
+    setToggleButton(!toggleButton);
+    setYearly(!yearly)
+    console.log(toggleButton, "value");
+  };
 
   useEffect(() => {
     if (!localStorage.getItem("token")) {
@@ -35,7 +41,13 @@ export default function About(props) {
         <table class="table table-hover table-fixed">
           <thead>
             <tr>
-              <th>#</th>
+              <th><div className="toggle" onClick={handleClick}>
+                  {toggleButton ? (
+                    <div className="toggle-left">Monthly</div>
+                  ) : (
+                    <div className="toggle-right">Yearly</div>
+                  )}
+                </div></th>
               <th className="text-center">
                 <div className="d-flex justify-content-center">
                   <div
@@ -254,7 +266,13 @@ export default function About(props) {
         <table class="table table-hover table-fixed">
           <thead>
             <tr>
-              <th>#</th>
+              <th><div className="toggle" onClick={handleClick}>
+                  {toggleButton ? (
+                    <div className="toggle-left">Monthly</div>
+                  ) : (
+                    <div className="toggle-right">Yearly</div>
+                  )}
+                </div></th>
               <th className="text-center">
                 <div className="d-flex justify-content-center">
                   <div
