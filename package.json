@@ -6,6 +6,7 @@
         "start": "npm run dev"
     },
     "dependencies": {
+        "concurrently": "^7.4.0",
         "google-search-results-nodejs": "^2.1.0"
     }
 }
