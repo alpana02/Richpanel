@@ -19,6 +19,8 @@ export default function About(props) {
     console.log(toggleButton, "value");
   };
 
+  // testing
+
   useEffect(() => {
     if (!localStorage.getItem("token")) {
       navigate("/homepage");
