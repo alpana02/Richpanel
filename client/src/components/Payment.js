@@ -42,6 +42,9 @@ export default function Payment(props) {
                     <div id="emailHelp" class="form-text">
                       Enter your credit or Debit card details below
                     </div>
+                    <div class="my-3">
+      <input type="text" id="disabledTextInput" class="form-control" placeholder="Card Number &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; MM/YY CVV"/>
+    </div>
                     <i class="bi bi-credit-card-2-back"></i>
                     <button
                       className="btn mb-3"
@@ -51,9 +54,10 @@ export default function Payment(props) {
                       Confirm Payment
                     </button>
                   </div>
-                  <div class="col" style={{ backgroundColor: "grey" }}>
+                  <div class="col my-4" style={{ backgroundColor: "#F2F1F1" }}>
+                  <h4>Order Summary</h4>
                     <table class="table table-sm caption-top">
-                      <tbody>
+                      <tbody style={{textSize: "10"}}>
                         <tr>
                           <td>Plan name</td>
                           <td>Basic</td>
