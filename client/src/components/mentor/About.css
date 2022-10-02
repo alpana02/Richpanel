@@ -24,3 +24,17 @@ label {
     margin-left: 10px;
     margin-right: 10px
 }
+
+.c-box {
+    display: inline-block;
+    background-color: lighten(red, 40);
+ }
+ 
+ .c-box__inner {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin: 0 20px;
+    aspect-ratio: 1 / 1;
+
+ }

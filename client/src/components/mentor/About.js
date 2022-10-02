@@ -40,7 +40,11 @@ export default function About(props) {
                     <thead>
                       <tr>
                         <th>#</th>
-                        <th style={{backgroundColor:"blue"}}>Mobile</th>
+                        <th><div class="c-box">
+   <div class="c-box__inner">
+      Mobile
+   </div>
+</div></th>
                         <th>Basic</th>
                         <th>Standard</th>
                         <th>Premium</th>
