@@ -28,17 +28,19 @@ router.get('/fetchSubscription', fetchuser,async(req,res) => {
 
 router.post('/updateSubscription',fetchuser, async(req,res) => {
     try{
+        console.log(req.body)
         let subsciptionStart = Date(Date.now())
         let plan = req.body.plan
         let interval = req.body.interval
-
+        
         let userDetails = await User.updateOne({
             _id : req.user.id
         },{
             $set : {
                 plan : plan,
                 interval : interval,
-                subsciptionStart : subsciptionStart
+                subsciptionStart : subsciptionStart,
+                price : req.body.price
             }
         })
 

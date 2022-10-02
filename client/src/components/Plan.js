@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+
 
 export default function Plan(props) {
   let navigate = useNavigate();
@@ -7,7 +9,7 @@ export default function Plan(props) {
 
   useEffect(() => {
     if (!localStorage.getItem("token")) {
-      navigate("/login");
+      navigate("/homepage");
     }
     getUser();
     fetchSubscription();
@@ -15,6 +17,19 @@ export default function Plan(props) {
   }, []);
 
   // Separate function to get user details
+
+  async function getUser() {
+    const response = await fetch(`http://localhost:5000/api/auth/getUser`, {
+      method: "GET",
+      headers: {
+        "auth-token": localStorage.getItem("token"),
+      },
+    });
+    const data = await response.json();
+    console.log(data)
+    setUserData(data)
+    setProfile(data);
+  }
 
   const fetchSubscription = async(req,res) => {
     const response = await fetch(`http://localhost:5000/api/plan/fetchSubscription`, {
@@ -27,16 +42,7 @@ export default function Plan(props) {
     console.log(data)
   }
 
-  async function getUser() {
-    const response = await fetch(`http://localhost:5000/api/auth/getUser`, {
-      method: "GET",
-      headers: {
-        "auth-token": localStorage.getItem("token"),
-      },
-    });
-    const data = await response.json();
-    setProfile(data);
-  }
+  const [userData, setUserData] = useState("");
 
   return (
     <section className="vh-100" style={{ backgroundColor: "#1E4C91" }}>
@@ -50,10 +56,10 @@ export default function Plan(props) {
               <div className="card-body p-3">
                 <b>Current Plan Details</b> <span class="badge badge-primary text-primary">Active</span> <button type="button" class="btn btn-default align-right">Cancel</button>
 
-                <div className=""><h3>Basic</h3>
-                <h8>Phone + Tablet</h8></div>
-                <h1><b>Rs 2000/year</b></h1>
-                <button type="button" class="btn btn-default border-primary text-primary mb-2">Change Plan</button>
+                <div className=""><h3>{userData.plan}</h3>
+                <h8>{userData.devices}</h8></div>
+                <h1><b>{userData.price}</b>/{userData.interval}</h1>
+                <Link to ='/about'><button type="button" class="btn btn-default border-primary text-primary mb-2">Change Plan</button></Link>
                 <p>Your subscription has started on <b>Jul 11th, 2022</b>and will auto renew on <b>Jul 12th, 2023</b> </p>
               </div>
             </div>

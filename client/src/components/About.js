@@ -11,7 +11,7 @@ export default function About(props) {
   const [yearly, setYearly] = useState(false);
   const [toggleButton, setToggleButton] = useState(false);
 
-  const [plan,setPlan] = useState("Standard");
+  const [plan,setPlan] = useState("");
 
   const handleClick = () => {
     setToggleButton(!toggleButton);
@@ -41,30 +41,39 @@ export default function About(props) {
     setProfile(data);
   }
 
-  const updateSubsription = async () => {
 
+  const updateSubsription = async () => {
+    console.log(plan)
     let price = 0;
-    if(yearly){
-      if(plan === 'Mobile'){
-        price = 100
-      }else if(plan === 'Standard'){
-        price = 500
-      }else if(plan === 'Premium'){
-        price = 700
-      }else if(plan === 'Basic'){
-        price = 300
+    if(!yearly){
+      if(plan === "Mobile"){
+        price = "1000";
       }
+      else if(plan === "Basic"){
+        price = "3000";
+      }
+      else if(plan === "Standard"){
+        price = "5000";
+      }
+      else if(plan === "Premium"){
+        price = "7000"
+      }
+
     }else{
-      if(plan === 'Mobile'){
-        price = 1000
-      }else if(plan === 'Standard'){
-        price = 5000
-      }else if(plan === 'Premium'){
-        price = 7000
-      }else if(plan === 'Basic'){
-        price = 3000
+      if(plan === "Mobile"){
+        price = "100"
+      }
+      else if(plan === "Basic"){
+        price = "300"
+      }
+      else if(plan === "Standard"){
+        price = "500"
+      }
+      else if(plan === "Premium"){
+        price = "700"
       }
     }
+    console.log(price)
 
     const response = await fetch(
       "http://localhost:5000/api/plan/updateSubscription",
@@ -84,6 +93,10 @@ export default function About(props) {
     let data = await response.json();
     console.log(data);
   };
+
+  
+
+
 
   return yearly ? (
     <div className="container py-6 mt-5">
@@ -339,7 +352,7 @@ export default function About(props) {
               </th>
               <th className="text-center">
                 <div className="d-flex justify-content-center">
-                  <button type="button" class="btn btn-light">
+                  <button type="button" class="btn btn-light" onClick={() => {setPlan("Mobile")}}>
                     <div
                       class="card text-white text-center py-3 px-1"
                       style={{ maxWidth: 120, backgroundColor: "#7893BD" }}
@@ -352,7 +365,7 @@ export default function About(props) {
               </th>
               <th>
                 <div className="d-flex justify-content-center">
-                  <button type="button" class="btn btn-light">
+                  <button type="button" class="btn btn-light" onClick={() => {setPlan("Basic")}}>
                     <div
                       class="card text-white text-center py-3 px-1"
                       style={{ maxWidth: 120, backgroundColor: "#7893BD" }}
@@ -365,7 +378,7 @@ export default function About(props) {
               </th>
               <th>
                 <div className="d-flex justify-content-center">
-                  <button type="button" class="btn btn-light">
+                  <button type="button" class="btn btn-light" onClick={() => {setPlan("Standard")}}>
                     <div
                       class="card text-white text-center py-3 px-1"
                       style={{ maxWidth: 120, backgroundColor: "#7893BD" }}
@@ -378,7 +391,7 @@ export default function About(props) {
               </th>
               <th>
                 <div className="d-flex justify-content-center">
-                  <button type="button" class="btn btn-light">
+                  <button type="button" class="btn btn-light" onClick={() => {setPlan("Premium")}}>
                     <div
                       class="card text-white text-center py-3 px-1"
                       style={{ maxWidth: 120, backgroundColor: "#7893BD" }}
@@ -391,6 +404,7 @@ export default function About(props) {
               </th>
             </tr>
           </thead>
+
           <tbody>
             <tr>
               <th scope="row">Yearly Price</th>

@@ -22,6 +22,9 @@ const UserSchema = new Schema({
   },
   interval: {
     type: String,
+  },
+  price:{
+    typr: String,
   }
 });
 const User = new mongoose.model("user", UserSchema);
