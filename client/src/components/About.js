@@ -23,7 +23,7 @@ export default function About(props) {
 
   useEffect(() => {
     if (!localStorage.getItem("token")) {
-      navigate("/homepage");
+      navigate("/login");
     }
     getUser();
     // eslint-disable-next-line

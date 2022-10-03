@@ -9,7 +9,7 @@ export default function Plan(props) {
 
   useEffect(() => {
     if (!localStorage.getItem("token")) {
-      navigate("/homepage");
+      navigate("/login");
     }
     getUser();
     fetchSubscription();
