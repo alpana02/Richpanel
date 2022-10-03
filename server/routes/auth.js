@@ -9,8 +9,17 @@ const User = require("../models/User");
 const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
+const Stripe = require('stripe');
+const stripe = Stripe('sk_test_51LoQRhSBQQqtWU9rZZJYrIQEOsM33ZBUI0KYRCF1HiBNNr9c3S8QJCJciXbBPhvW37PMpJ3mYzyocObCmjdFEN4B00fjvoZj4k');
 
 const JWT_SECRET = "secretkeyforsession";
+
+var charge = await stripe.charges.retrieve(
+  'ch_3LoRAP2eZvKYlo2C0h9V6hZg',
+  {
+    apiKey: 'sk_test_51LoQRhSBQQqtWU9rZZJYrIQEOsM33ZBUI0KYRCF1HiBNNr9c3S8QJCJciXbBPhvW37PMpJ3mYzyocObCmjdFEN4B00fjvoZj4k'
+  }
+);
 
 // AUTH ROUTES :
 // Route1: signup
